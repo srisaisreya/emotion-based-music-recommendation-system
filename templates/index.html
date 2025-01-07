@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <title>index</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <style type="text/css">
+   body{
+    background-image: url("/static/mwall.jpeg");
+    padding: 30px;
+
+    font-family: 'Lato', sans-serif;
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+   }
+.button {
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #ffb7b6;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  height: 50px;
+  width: 110px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  top: -100%;
+  font-size: 25px;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+h1{
+  color: white;
+  font-size: 40px;
+  font-family: 'Lato', sans-serif;
+}
+.right {
+  position: absolute;
+  right: 10%;
+  bottom: 15%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.pos{
+  position: absolute;
+  left: 10%;
+  top: 40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.logo{
+  width: 40%;
+  left: 4%;
+  position: absolute;
+
+}
+.select{
+  right: 3%;
+  top:5%;
+  position: absolute;
+}
+
+select{
+  background:pink;
+  color: teal;
+  border: 1px teal;
+  border-radius: 5px;
+}
+
+
+  </style>
+    </head>
+    <body>
+
+        <br>
+        <br>
+        <div class="logo">
+          <a href=/><img class="logo" src="static/LOGO2.png"></a>
+        </div>
+
+        <div class="select">
+          <form class="form-inline " method="POST" action="{{ url_for('test') }}">
+            <div class="form-group">
+              <div class="input-group">
+                  <span class="input-group-addon" style="color: white">Select Language: </span>
+                      <select name="comp_select" class="selectpicker form-control" onchange="this.form.submit()">
+                        {% for i in data %}
+                        <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                      </select>
+              </div>
+            </div>
+          </form>
+        </div>
+
+            <div class="pos">
+              <center>
+                <h1>How are you feeling???</h1>
+
+              </center>
+              
+            </div>
+            <div class="right">
+              <center>
+             <h1>Let's take a look!</h1><br>
+            <a href=cam ><button class="button" style="vertical-align:middle"><span>Next</span></button></a>
+              </center>
+            
+
+        </div>
+
+    </body>
+
+</html>

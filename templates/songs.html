@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+        	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<title>index</title>
+		<style type="text/css">
+		* {
+		  margin: 0;
+		  padding: 0;
+		  box-sizing: border-box;
+		}
+select{
+  background:#20b2aa;
+  color: pink;
+  border: 1px pink;
+  border-radius: 5px;
+}
+
+
+		.container {
+		  background: #ff8da1;
+		  padding: 20px;
+		  margin: 70px;
+		  border-radius: 10px;
+		}
+
+		.container.heading {
+		  font-size: 3rem;
+		  padding: 2rem 0;
+		  text-align: center;
+		  font-family: Verdana, Geneva, Tahoma, sans-serif;
+		  text-shadow: 0 0.5rem 1rem #000;
+		  color: #fff;
+		}
+
+		.container .music-container {
+		  display: flex;
+		  align-items: center;
+		  flex-flow: column;
+		}
+
+		.container .music-container .box {
+		  height: 7rem;
+		  width: 80%;
+		  display: flex;
+		  align-items: center;
+		  background: #f9f9f9;
+		  border-radius: 1rem;
+		  overflow: hidden;
+		  margin: 2rem;
+		}
+
+		.container .music-container .box .image {
+		  height: 100%;
+		  width: 25%;
+		}
+
+		.container .music-container .box .image img {
+		  height: 100%;
+		  width: 100%;
+		  object-fit: cover;
+		}
+
+		.container .music-container .box .music {
+		  width: 75%;
+		}
+
+		.container .music-container .box .music audio {
+		  width: 100%;
+		  outline: none;
+		  background: #E7F6FC;
+		}
+
+		.container
+		  .music-container
+		  .box
+		  .music
+		  audio::-webkit-media-controls-enclosure {
+		  background: none;
+		}
+
+		@media (max-width: 600px) {
+		  .container .music-container .box {
+		    height: 27rem;
+		    width: 90%;
+		    flex-flow: column;
+		  }
+
+		  .container .music-container .box .image {
+		    height: 80%;
+		    width: 100%;
+		  }
+		  .container .music-container .box .music {
+		    height: 20%;
+		    width: 100%;
+		  }
+		}
+		body{
+			background: #ffb7b6;
+			font-family: 'Lato', sans-serif;
+            border: 30px solid #1effdc;
+		}
+		h1{
+			color: white;
+			font-size: 40px;
+			font-family: 'Titillium Web', sans-serif;
+
+		}
+
+		h2{
+			color: white;
+			font-size: 30px;
+			font-family: 'Titillium Web', sans-serif;
+
+		}
+	    .contain{
+		width: 450px;
+
+	    }
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.button1 {
+  background-color: #ff8da1; 
+  color: white; 
+
+}
+.button1:hover {
+  background-color: #20b2aa;
+  color: white;
+}
+	p{
+		color: white;
+		font-size: 20px;
+		font-family: 'Titillium Web', sans-serif;
+	}
+	td{
+		padding: 10px;
+	}
+	.logo{
+	  width: 40%;
+	  top: 8%;
+	  left: 3%;
+	  position: absolute;
+
+	}
+	.select{
+  right: 5%;
+  top:8%;
+  position: absolute;
+}
+
+	</style>
+
+</head>
+<body>
+	    <div class="logo">
+          <a href=/><img class="logo" src="static/LOGO2.png"></a>
+        </div>
+        <div class="select">
+          <form class="form-inline " method="POST" action="{{ url_for('test') }}">
+            <div class="form-group">
+              <div class="input-group">
+                  <span class="input-group-addon" style="color: white">Select Language: </span>
+                      <select name="comp_select" class="selectpicker form-control" onchange="this.form.submit()">
+                        {% for i in data %}
+                        <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                      </select>
+              </div>
+            </div>
+          </form>
+        </div>
+	<center>
+
+		<br><br><br><br><br>
+		<h2>You are {{emotion}}</h2>
+		<h1>{{quote}}</h1>
+		
+	</center>
+	    <div class="container" >  
+            <div class="music-container">
+				{% for i in range(5):%}
+				<p align="left">{{i+1}}. {{songs[i]}}</p>
+				<div class="box" style="background: #e3f6fa">
+                    <div class="image">
+                        <img src="static/music1.jpg" >
+                    </div>
+                    <div class="music" style="background: #e3f6fa">
+                        <audio src="../static/{{lan}}/{{emotion}}/{{songs[i]}}" controls></audio>
+                    </div>
+                </div>
+				{% endfor %}
+            </div>
+        </div>
+        <center>
+        <table>
+        	<tr><td><button class="button button1" style="vertical-align:middle" onClick="window.location.reload();"><span>More</span></button>
+			</td>
+			<td> <a href=cam ><button class="button button1" style="vertical-align:middle"><span>Back</span></button></a></td>
+			</tr>
+
+        </table>
+        </center>
+<br>		
+</body>
+</html>
